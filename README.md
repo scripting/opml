@@ -8,3 +8,9 @@ If you have a question or comment, post an <a href="https://github.com/scripting
 
 Dave Winer
 
+### Changes
+
+1/24/18 by DW
+
+Added an optional flExpandIncludes param on readOpmlFile.
+

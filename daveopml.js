@@ -3,9 +3,10 @@ exports.readOpmlFile = readOpmlFile;
 exports.readOpmlUrl = readOpmlUrl;
 exports.outlineVisiter = outlineVisiter;
 
-var request = require ("request");
-var stream = require ("stream"); //6/23/15 by DW
-var opmlParser = require ("opmlparser"); //6/23/15 by DW
+const request = require ("request");
+const stream = require ("stream"); //6/23/15 by DW
+const opmlParser = require ("opmlparser"); //6/23/15 by DW
+const fs = require ("fs"); //11/9/17 by DW
 
 
 var opmlData = { 
@@ -250,9 +251,11 @@ function readOpmlString (s, callback, flExpandIncludes) {
 		
 		//copy elements of the metadata object into the root of the outline
 			function copyone (name) {
-				var val = metadata [name];
-				if ((val !== undefined) && (val != null)) {
-					theOutline [name] = val;
+				if (metadata !== undefined) { //3/11/18 by DW
+					var val = metadata [name];
+					if ((val !== undefined) && (val != null)) {
+						theOutline [name] = val;
+						}
 					}
 				}
 			copyone ("title");
@@ -298,14 +301,14 @@ function readOpmlString (s, callback, flExpandIncludes) {
 			}
 		});
 	}
-function readOpmlFile (f, callback) { //6/25/15 by DW 
+function readOpmlFile (f, callback, flExpandIncludes) {
 	fs.readFile (f, function (err, data) {
 		if (err) {
 			console.log ("readOpmlFile: error reading file " + f + " == " + err.message)
 			callback (undefined);
 			}
 		else {
-			readOpmlString (data.toString (), callback);
+			readOpmlString (data.toString (), callback, flExpandIncludes);
 			}
 		});
 	}
