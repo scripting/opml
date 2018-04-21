@@ -9,7 +9,7 @@ opml.readOpmlUrl (urlOpmlFile, function (theOpml) {
 		console.log ("There was an error reading the OPML file.");
 		}
 	else {
-		console.log ("It took " + utils.secondsSince (whenstart) + " seconds to read and parse the feed.");
+		console.log ("It took " + utils.secondsSince (whenstart) + " seconds to read and parse the file.");
 		console.log (utils.jsonStringify (theOpml));
 		}
 	});
