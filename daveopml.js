@@ -1,7 +1,10 @@
+const myProductName = "daveopml", myVersion = "0.4.6";   
+
 exports.readOpmlString = readOpmlString;
 exports.readOpmlFile = readOpmlFile;
 exports.readOpmlUrl = readOpmlUrl;
 exports.outlineVisiter = outlineVisiter;
+exports.processOpmlSubscriptionList = processOpmlSubscriptionList; //12/23/20 AM by DW
 
 const request = require ("request");
 const stream = require ("stream"); //6/23/15 by DW
@@ -331,4 +334,29 @@ function readOpmlUrl (urlOutline, callback, flExpandIncludes) {
 				}
 			}
 		});
+	}
+function processOpmlSubscriptionList (opmltext, flExpandIncludes, callback) { //12/21/20 by DW
+	opml.readOpmlString (opmltext, function (theOutline) {
+		if (theOutline !== undefined) {
+			var feedlist = new Array ();
+			function getFeeds (theOutline) {
+				if (theOutline.subs !== undefined) {
+					for (var i = 0; i < theOutline.subs.length; i++) {
+						var node = theOutline.subs [i];
+						if (node.xmlurl !== undefined) {
+							feedlist.push (node.xmlurl);
+							}
+						else {
+							getFeeds (node);
+							}
+						}
+					}
+				}
+			getFeeds (theOutline);
+			callback (feedlist);
+			}
+		else {
+			callback (undefined);
+			}
+		}, flExpandIncludes);
 	}

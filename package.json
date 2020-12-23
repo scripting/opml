@@ -1,9 +1,9 @@
 {
 	"name": "daveopml",
 	"description": "Read OPML files into JavaScript structures, correctly interpreting includes.",
-	"author": "Dave Winer <dave@smallpicture.com>",
+	"author": "Dave Winer <dave@scripting.com>",
 	"license": "MIT",
-	"version": "0.4.5",
+	"version": "0.4.6",
 	"main": "daveopml.js",
 	"repository": {
 		"type": "git",
