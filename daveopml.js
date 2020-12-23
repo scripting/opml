@@ -1,4 +1,4 @@
-const myProductName = "daveopml", myVersion = "0.4.6";   
+const myProductName = "daveopml", myVersion = "0.4.7";   
 
 exports.readOpmlString = readOpmlString;
 exports.readOpmlFile = readOpmlFile;
@@ -336,7 +336,7 @@ function readOpmlUrl (urlOutline, callback, flExpandIncludes) {
 		});
 	}
 function processOpmlSubscriptionList (opmltext, flExpandIncludes, callback) { //12/21/20 by DW
-	opml.readOpmlString (opmltext, function (theOutline) {
+	readOpmlString (opmltext, function (theOutline) {
 		if (theOutline !== undefined) {
 			var feedlist = new Array ();
 			function getFeeds (theOutline) {
