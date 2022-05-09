@@ -1,4 +1,4 @@
-const myProductName = "daveopml", myVersion = "0.4.7";   
+const myProductName = "daveopml", myVersion = "0.4.8";
 
 exports.readOpmlString = readOpmlString;
 exports.readOpmlFile = readOpmlFile;
