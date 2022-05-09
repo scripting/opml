@@ -10,14 +10,6 @@ Dave Winer
 
 ### Changes
 
-5/9/22 by DW
-
-We lost two versions, 0.4.6 and 0.4.7. They were in the GitHub repository, but the source we had was old. 
-
-I was able to restore the changes. Basically one new interface routine was added, processOpmlSubscriptionList. 
-
-I called the resulting version 0.4.8.
-
 1/24/18 by DW
 
 Added an optional flExpandIncludes param on readOpmlFile.
