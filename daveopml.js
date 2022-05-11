@@ -96,7 +96,7 @@ function copyScalars (source, dest) { //8/31/14 by DW
 			}
 		}
 	}
-function outlineVisiter (theOutline, inlevelcallback, outlevelcallback, nodecallback, visitcompletecallback, flStopAtDocs) {
+function outlineVisiter (theOutline, inlevelcallback, outlevelcallback, nodecallback, visitcompletecallback, flStopAtDocs=true) {
 	function readInclude (theIncludeNode, callback) {
 		console.log ("readInclude: url == " + theIncludeNode.url);
 		readOpmlUrl (theIncludeNode.url, function (theOutline) {
@@ -181,9 +181,6 @@ function outlineVisiter (theOutline, inlevelcallback, outlevelcallback, nodecall
 			}
 		}
 	
-	if (flStopAtDocs === undefined) { //7/15/15 by DW -- see note at top of routine
-		flStopAtDocs = true;
-		}
 	
 	doLevel (theOutline, "", function () {
 		outlevelcallback ();
